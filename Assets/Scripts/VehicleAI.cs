@@ -5,11 +5,10 @@ using UnityEngine;
 public class VehicleAI : MonoBehaviour
 {
 
-    public float aiVehicleSpeed = 15f;
+    private float aiVehicleSpeed = 11f;
     public float minDistance = 31f;
     public float maxDistance = 65f;
     private bool aiVehicleMovingForward = true;
-    public GameObject aiVehicle;
 
     // Start is called before the first frame update
     void Start()
