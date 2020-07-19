@@ -9,6 +9,7 @@ public class FollowPlayer : MonoBehaviour
     public Vector3 originalOffset = new Vector3(0, 5, -7);
     public Vector3 altOffset = new Vector3(0, 5, -10);
     private Vector3 offset;
+    public string altCameraKey;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +24,7 @@ public class FollowPlayer : MonoBehaviour
         transform.position = player.transform.position + offset;
 
         // switch camera view on key press
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown(altCameraKey))
         {
             if (altCamera == false)
             {

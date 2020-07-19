@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,6 +13,9 @@ public class PlayerController : MonoBehaviour
     private float forwardInput;
     public string verticalAxis;
     public string horizontalAxis;
+    public GameObject playerVehicle;
+    public static bool gameWon = false;
+    public static string winText;
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +47,10 @@ public class PlayerController : MonoBehaviour
 
         transform.Rotate(Vector3.up, Time.deltaTime * turnSpeed * horizontalInput);
 
-        
+        if ((transform.position.z > 175) && (gameWon == false))
+        {
+            winText = (playerVehicle.name + " Wins!");
+            gameWon = true;
+        }
     }
 }

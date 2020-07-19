@@ -20,26 +20,25 @@ public class VehicleAI : MonoBehaviour
     void Update()
     {
         // change direction of vehicle based on distance
-        if (transform.position.z < minDistance)
-        {
-            aiVehicleMovingForward = false;
-        }
+            if (transform.position.z < minDistance)
+            {
+                aiVehicleMovingForward = false;
+            }
 
-        if (transform.position.z > maxDistance)
-        {
-            aiVehicleMovingForward = true;
-        }
-
-        // make vehicle move forward or back
-        if (aiVehicleMovingForward == true)
-        {
-            transform.Translate(Vector3.forward * aiVehicleSpeed * Time.deltaTime);
-        }
-        else
-        {
-            transform.Translate(Vector3.back * aiVehicleSpeed * Time.deltaTime);
-        }
+            if (transform.position.z > maxDistance)
+            {
+                aiVehicleMovingForward = true;
+            }
         
-
+        // make vehicle move forward or back
+            if (aiVehicleMovingForward == true)
+            {
+                transform.Translate(Vector3.forward * aiVehicleSpeed * Time.deltaTime);
+            }
+            else
+            {
+                transform.Translate(Vector3.back * aiVehicleSpeed * Time.deltaTime);
+            }
+        
     }
 }
