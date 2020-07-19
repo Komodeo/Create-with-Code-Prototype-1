@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     public float turnSpeed = 75f;
     private float horizontalInput;
     private float forwardInput;
+    public string verticalAxis;
+    public string horizontalAxis;
 
     // Start is called before the first frame update
     void Start()
@@ -20,11 +22,26 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         // Move vehicle forward and back
-        forwardInput = Input.GetAxis("Vertical");
+        forwardInput = Input.GetAxis(verticalAxis);
         transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
 
         // Rotate vehicle
-        horizontalInput = Input.GetAxis("Horizontal");
+        horizontalInput = Input.GetAxis(horizontalAxis);
+
+        // Reverse rotation when vehicle is backing up
+        if (forwardInput < 0)
+        {
+            horizontalInput = horizontalInput * -1;
+        }
+
+        // Disallow rotation when vehicle is stationary
+        if (forwardInput == 0)
+        {
+            horizontalInput = 0;
+        }
+
         transform.Rotate(Vector3.up, Time.deltaTime * turnSpeed * horizontalInput);
+
+        
     }
 }
